@@ -40,54 +40,20 @@ function draw() {
     var fVal = gSlider.value();
     
     // Use a for loop to show all the boxes
-    for (var i = 0; i<boxes.length;i++){
-        boxes[i].show();
-    }
+    for(var i=0; i< boxes.length; i=i+1) {
+         boxes[i].display();
+         }
+
     ground.display();
     
+    
 }
- 
-
-// You can either create a file for the class Box or build a simple function that creates one box at a time.
-// I have gone for the second option.
-function Box(x, y, w, h, options) {
-
-    // add options such as friction and restitution. Experiment with the values
-    var options = {
-        restitution:1.2
-    }
- 
-    // create your box using the function arguments
-    this.body = Bodies.rectangle(x,y,w,h,options);
-    this.w = width;
-    this.h = height;
-    World.add(world, this.body);
-    // x - x-coordinate
-    this.x = mouseX;
-    // y - y-coordinate
-    this.y = mouseY;
-    // w - width of the box
-     
-    // h - height of the box
-  
- 
-
-    // Create a show method which will draw the box every time it is called inside the draw method.
-    // remember to push and pop.
-   this.show = function () {
-       var pos = this.body.position;
-       var angle = this.body.angle;
-       push();
-       translate (pos.x,pos.y);
-       rotate(angle);
-       rectMode(CENTER);
-       rect(0,0,this.width,this.height);
-       pop();
-    }
-} 
 function mousePressed() {
     if (mouseY < 350) {
-     // Every time a mouse press occures create a new box.
+        // Every time a mouse press occures create a new box.
         boxes.push(new Box(mouseX,mouseY,random(10,100),random(10,100)));
     }
 }
+
+// You can either create a file for the class Box or build a simple function that creates one box at a time.
+// I have gone for the second option.
